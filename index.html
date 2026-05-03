@@ -407,6 +407,81 @@ a{text-decoration:none;color:inherit}
 @keyframes fadein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .fadein{animation:fadein 400ms ease both}
 
+/* ── SPLASH SCREEN ── */
+.splash{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:2rem;
+  transition:opacity 400ms ease;
+}
+.splash.hidden{opacity:0;pointer-events:none}
+.splash-logo{margin-bottom:2rem;animation:fadein 600ms ease both}
+.splash-logo svg{width:72px;height:72px}
+.splash-title{font-size:clamp(3rem,12vw,6rem);font-weight:800;line-height:0.85;letter-spacing:-0.03em;text-align:center;margin-bottom:0.75rem;animation:fadein 600ms 100ms ease both}
+.splash-title .fake{color:var(--t1);opacity:0.5}
+.splash-title .or{display:block;font-size:0.28em;font-family:var(--mono);color:var(--t3);letter-spacing:0.18em;margin:0.4em 0}
+.splash-title .real{color:var(--blue4)}
+.splash-sub{font-size:0.9rem;color:var(--t2);text-align:center;max-width:360px;line-height:1.7;margin-bottom:2.5rem;animation:fadein 600ms 200ms ease both}
+.splash-actions{display:flex;flex-direction:column;gap:0.75rem;width:100%;max-width:340px;animation:fadein 600ms 300ms ease both}
+.btn-splash-login{
+  width:100%;min-height:52px;border-radius:var(--r);
+  background:linear-gradient(180deg,#1a4fa0,#0e357a);
+  color:var(--t1);font-family:var(--mono);font-size:0.9rem;font-weight:700;letter-spacing:0.12em;
+  border:none;border-bottom:2px solid var(--blue3);
+  transition:background 150ms,transform 100ms;cursor:pointer;
+}
+.btn-splash-login:hover{background:linear-gradient(180deg,#2060b8,#1040a0);transform:translateY(-1px)}
+.btn-splash-register{
+  width:100%;min-height:52px;border-radius:var(--r);
+  background:transparent;color:var(--blue4);
+  font-family:var(--mono);font-size:0.9rem;font-weight:700;letter-spacing:0.12em;
+  border:1px solid rgba(74,163,240,0.4);
+  transition:background 150ms,border-color 150ms;cursor:pointer;
+}
+.btn-splash-register:hover{background:rgba(74,163,240,0.08);border-color:var(--blue3)}
+.btn-splash-guest{
+  width:100%;min-height:44px;background:transparent;color:var(--t3);
+  font-family:var(--mono);font-size:0.78rem;letter-spacing:0.08em;
+  border:1px solid var(--border);border-radius:var(--r);
+  transition:color 150ms,border-color 150ms;cursor:pointer;
+}
+.btn-splash-guest:hover{color:var(--t2);border-color:var(--t2)}
+.splash-sep{display:flex;align-items:center;gap:0.75rem;color:var(--t3);font-size:0.72rem;font-family:var(--mono)}
+.splash-sep::before,.splash-sep::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ── PROFILE SCREEN ── */
+.screen--profile{justify-content:flex-start;padding-bottom:4rem}
+.profile-wrap{width:100%;max-width:680px;display:flex;flex-direction:column;gap:1.75rem;padding-top:1.5rem}
+.profile-title{font-size:clamp(1.8rem,5vw,2.5rem);font-weight:800;color:var(--t1);letter-spacing:-0.02em}
+.avatar-upload-zone{display:flex;flex-direction:column;align-items:center;gap:1.25rem;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:2rem}
+.avatar-upload-preview{width:96px;height:96px;border-radius:50%;overflow:hidden;position:relative;background:var(--card2);border:3px solid var(--border);cursor:pointer;transition:border-color 200ms;flex-shrink:0}
+.avatar-upload-preview:hover{border-color:var(--blue3)}
+.avatar-upload-preview img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.avatar-upload-preview svg{width:100%;height:100%}
+.avatar-upload-overlay{position:absolute;inset:0;border-radius:50%;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 200ms;cursor:pointer;font-size:1.4rem}
+.avatar-upload-preview:hover .avatar-upload-overlay{opacity:1}
+.avatar-upload-hint{font-family:var(--mono);font-size:0.7rem;color:var(--t3);text-align:center;line-height:1.6}
+.btn-upload-photo{background:transparent;color:var(--blue3);border:1px solid rgba(74,163,240,0.3);font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;padding:0.5rem 1.25rem;border-radius:6px;cursor:pointer;transition:background 150ms,border-color 150ms}
+.btn-upload-photo:hover{background:rgba(74,163,240,0.08);border-color:var(--blue3)}
+#avatar-file-input{display:none}
+.profile-section{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.5rem;display:flex;flex-direction:column;gap:0.85rem}
+.profile-section__title{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;color:var(--t3);text-transform:uppercase}
+.rename-current{display:flex;align-items:center;gap:0.75rem}
+.rename-current-name{font-family:var(--mono);font-size:1.1rem;font-weight:700;color:var(--t1)}
+.rename-cooldown{font-family:var(--mono);font-size:0.68rem;color:var(--t3);background:var(--card2);padding:0.2rem 0.6rem;border-radius:4px}
+.rename-cooldown.available{color:var(--real-text);background:rgba(34,197,94,0.1)}
+.rename-form{display:flex;gap:0.5rem}
+.rename-input{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:8px;color:var(--t1);font-family:var(--mono);font-size:0.9rem;padding:0.6rem 0.85rem;outline:none;transition:border-color 150ms}
+.rename-input:focus{border-color:var(--blue3)}
+.btn-rename{background:linear-gradient(180deg,#1a4fa0,#0e357a);color:var(--t1);font-family:var(--mono);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;padding:0.6rem 1.1rem;border-radius:6px;border:none;cursor:pointer;transition:background 150ms;white-space:nowrap;border-bottom:2px solid var(--blue3)}
+.btn-rename:hover{background:linear-gradient(180deg,#2060b8,#1040a0)}
+.btn-rename:disabled{opacity:0.4;cursor:not-allowed}
+.profile-msg{font-family:var(--mono);font-size:0.75rem;padding:0.4rem 0;min-height:1.2em}
+.profile-msg.ok{color:var(--real-text)}
+.profile-msg.err{color:var(--fake-text)}
+.dropdown-avatar-img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+
 @media(min-width:600px){.screen--game{align-items:center}.game-header,.game-main,.game-footer{max-width:var(--max);width:100%}}
 @media(max-height:700px){.hero{padding:0.5rem 0}.how-grid{display:none}}
 @media(max-width:900px){.big-metrics{grid-template-columns:1fr 1fr}.type-grid{grid-template-columns:1fr}.podium{grid-template-columns:1fr}.mode-cards{grid-template-columns:1fr}}
@@ -416,6 +491,35 @@ a{text-decoration:none;color:inherit}
 <body>
 
 <div id="flash" class="flash" aria-hidden="true"></div>
+
+<!-- ═══════════ SPLASH SCREEN ═══════════ -->
+<div id="splash" class="splash">
+  <div class="splash-logo">
+    <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="36" cy="36" rx="31" ry="19" stroke="#4aa3f0" stroke-width="2.5" fill="none" opacity="0.7"/>
+      <path d="M36 17C28 17 21 24.8 21 36C21 47.2 28 55 36 55V17Z" fill="#1a6dcc" opacity="0.85"/>
+      <path d="M36 17C44 17 51 24.8 51 36C51 47.2 44 55 36 55V17Z" fill="#2a85e0" opacity="0.85"/>
+      <circle cx="36" cy="36" r="8" fill="#060d1a"/>
+      <circle cx="36" cy="36" r="4" fill="#4aa3f0" opacity="0.7"/>
+      <circle cx="38.5" cy="33.5" r="1.5" fill="white" opacity="0.8"/>
+      <circle cx="36" cy="12" r="2.5" fill="#4aa3f0" opacity="0.6"/>
+      <line x1="36" y1="14.5" x2="36" y2="17" stroke="#4aa3f0" stroke-width="2" opacity="0.5"/>
+    </svg>
+  </div>
+  <h1 class="splash-title">
+    <span class="fake">FAKE</span>
+    <span class="or">or</span>
+    <span class="real">REAL</span>
+  </h1>
+  <p class="splash-sub">Saurez-vous distinguer une vraie photo d'une image générée par IA ?</p>
+  <div class="splash-actions">
+    <button class="btn-splash-login" id="splash-login-btn">🔑 SE CONNECTER</button>
+    <button class="btn-splash-register" id="splash-register-btn">✨ CRÉER UN COMPTE</button>
+    <div class="splash-sep">ou</div>
+    <button class="btn-splash-guest" id="splash-guest-btn">Continuer en tant qu'invité</button>
+  </div>
+</div>
+
 <div id="lightbox" class="lightbox" role="dialog">
   <button class="lb-close" id="lb-close">✕</button>
   <img id="lb-img" src="" alt="Zoom"/>
@@ -501,6 +605,7 @@ a{text-decoration:none;color:inherit}
         </div>
         <div id="dd-logged-menu" class="hidden">
           <div class="dropdown-menu">
+            <button class="dropdown-item" id="dd-profile-btn"><span class="dropdown-item__icon">👤</span>Mon profil</button>
             <button class="dropdown-item" id="dd-career-btn"><span class="dropdown-item__icon">📊</span>Ma carrière</button>
             <button class="dropdown-item" id="dd-leaderboard-btn"><span class="dropdown-item__icon">🏆</span>Leaderboard</button>
             <div class="dropdown-sep"></div>
@@ -726,6 +831,36 @@ a{text-decoration:none;color:inherit}
   </div>
 </div>
 
+<!-- PROFILE SCREEN -->
+<div id="screen-profile" class="screen screen--profile">
+  <div class="profile-wrap fadein">
+    <h2 class="profile-title">Mon Profil</h2>
+    <div class="avatar-upload-zone">
+      <div class="avatar-upload-preview" id="profile-avatar-preview" title="Changer la photo">
+        <div id="profile-avatar-content"></div>
+        <div class="avatar-upload-overlay">📷</div>
+      </div>
+      <div class="avatar-upload-hint">Clique sur ta photo pour la changer<br>JPG, PNG — max 2 Mo</div>
+      <button class="btn-upload-photo" id="btn-upload-photo">📁 Choisir une photo</button>
+      <input type="file" id="avatar-file-input" accept="image/jpeg,image/png,image/webp" />
+      <div class="profile-msg" id="avatar-msg"></div>
+    </div>
+    <div class="profile-section">
+      <div class="profile-section__title">Pseudo</div>
+      <div class="rename-current">
+        <span class="rename-current-name" id="profile-current-name">—</span>
+        <span class="rename-cooldown" id="rename-cooldown-badge">Chargement…</span>
+      </div>
+      <div class="rename-form">
+        <input class="rename-input" id="rename-input" type="text" maxlength="20" placeholder="Nouveau pseudo" autocomplete="off"/>
+        <button class="btn-rename" id="btn-rename">CHANGER</button>
+      </div>
+      <div class="profile-msg" id="rename-msg"></div>
+    </div>
+    <button class="btn-ghost" id="profile-back-btn" style="max-width:100%">← Retour</button>
+  </div>
+</div>
+
 <!-- GAMEOVER -->
 <div id="screen-gameover" class="screen screen--gameover">
   <div class="go-wrap fadein">
@@ -755,18 +890,13 @@ a{text-decoration:none;color:inherit}
 
 <script>
 /* ═══════════════════════════════════════════════════════
-   STORAGE — Persistent key-value via window.storage API
-   - Shared (shared=true)  : comptes joueurs, leaderboard compétitif
-   - Private (shared=false): historique personnel par joueur
+   STORAGE
    ═══════════════════════════════════════════════════════ */
-
-/* Hash SHA-256 en hex — pour les mots de passe */
 async function sha256(str){
   const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
   return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
 }
 
-/* Wrappers storage avec fallback localStorage */
 const KV={
   async get(key,shared=false){
     try{
@@ -790,93 +920,115 @@ const KV={
 };
 
 /* ═══════════════════════════════════════════════════════
-   AUTH — Accounts stored in shared storage
-   Key format: "account:<pseudo_lower>"  → {name,hash,createdAt}
-   Session: stored in sessionStorage (volatile)
+   AUTH
    ═══════════════════════════════════════════════════════ */
 const Auth={
   _session:null,
 
   _sessionKey(){return 'es_session';},
 
-  /* Charger la session depuis sessionStorage */
   loadSession(){
-    try{const s=sessionStorage.getItem(this._sessionKey());if(s)this._session=JSON.parse(s);}catch{}
+    try{const s=localStorage.getItem(this._sessionKey());if(s)this._session=JSON.parse(s);}catch{}
     return this._session;
   },
 
-  /* Sauver la session */
   _saveSession(data){
     this._session=data;
-    try{sessionStorage.setItem(this._sessionKey(),JSON.stringify(data));}catch{}
+    try{localStorage.setItem(this._sessionKey(),JSON.stringify(data));}catch{}
   },
 
-  /* Vider la session */
   logout(){
     this._session=null;
-    try{sessionStorage.removeItem(this._sessionKey());}catch{}
+    try{localStorage.removeItem(this._sessionKey());}catch{}
   },
 
-  isLoggedIn(){return!!this._session},
-  getName(){return this._session?.name||null},
-  getNameLower(){return this._session?.name?.toLowerCase()||null},
+  isLoggedIn(){return!!this._session;},
+  getName(){return this._session?.name||null;},
+  getNameLower(){return this._session?.name?.toLowerCase()||null;},
 
-  /* Clé compte dans shared storage */
   _accountKey(name){return 'account:'+name.toLowerCase().trim();},
 
-  /* Inscription — retourne {ok,error} */
   async register(name,password){
     name=name.trim();
     if(!name||name.length<2)return{ok:false,error:'Pseudo trop court (min 2 caractères)'};
     if(name.length>20)return{ok:false,error:'Pseudo trop long (max 20 caractères)'};
     if(!/^[a-zA-Z0-9_\-À-ÿ]+$/.test(name))return{ok:false,error:'Caractères invalides (lettres, chiffres, _ et - uniquement)'};
     if(!password||password.length<4)return{ok:false,error:'Mot de passe trop court (min 4 caractères)'};
-
-    /* Vérifier unicité du pseudo (shared storage) */
     const existing=await KV.get(this._accountKey(name),true);
     if(existing)return{ok:false,error:'Ce pseudo est déjà pris — choisis-en un autre'};
-
     const hash=await sha256(password);
-    const account={name,hash,createdAt:Date.now()};
+    const account={name,hash,createdAt:Date.now(),avatar:null,lastRenameAt:null};
     await KV.set(this._accountKey(name),account,true);
     this._saveSession({name});
     return{ok:true};
   },
 
-  /* Connexion — retourne {ok,error} */
   async login(name,password){
     name=name.trim();
     if(!name)return{ok:false,error:'Entrez votre pseudo'};
     if(!password)return{ok:false,error:'Entrez votre mot de passe'};
-
     const account=await KV.get(this._accountKey(name),true);
     if(!account)return{ok:false,error:'Aucun compte trouvé pour ce pseudo'};
-
     const hash=await sha256(password);
     if(hash!==account.hash)return{ok:false,error:'Mot de passe incorrect'};
-
     this._saveSession({name:account.name});
     return{ok:true};
+  },
+
+  async getAccount(){
+    const name=this.getName();if(!name)return null;
+    return await KV.get(this._accountKey(name),true);
+  },
+
+  async setAvatar(base64){
+    const name=this.getName();if(!name)return{ok:false,error:'Non connecté'};
+    const account=await KV.get(this._accountKey(name),true);
+    if(!account)return{ok:false,error:'Compte introuvable'};
+    account.avatar=base64;
+    await KV.set(this._accountKey(name),account,true);
+    return{ok:true};
+  },
+
+  async rename(newName){
+    newName=newName.trim();
+    if(!newName||newName.length<2)return{ok:false,error:'Pseudo trop court'};
+    if(newName.length>20)return{ok:false,error:'Pseudo trop long (max 20 caractères)'};
+    if(!/^[a-zA-Z0-9_\-À-ÿ]+$/.test(newName))return{ok:false,error:'Caractères invalides'};
+    const oldName=this.getName();if(!oldName)return{ok:false,error:'Non connecté'};
+    if(newName.toLowerCase()===oldName.toLowerCase())return{ok:false,error:"C'est déjà ton pseudo !"};
+    const account=await KV.get(this._accountKey(oldName),true);
+    if(!account)return{ok:false,error:'Compte introuvable'};
+    if(account.lastRenameAt){
+      const daysSince=(Date.now()-account.lastRenameAt)/(1000*60*60*24);
+      if(daysSince<7){
+        const daysLeft=Math.ceil(7-daysSince);
+        return{ok:false,error:`Changement de pseudo possible dans ${daysLeft} jour${daysLeft>1?'s':''}`};
+      }
+    }
+    const taken=await KV.get(this._accountKey(newName),true);
+    if(taken)return{ok:false,error:'Ce pseudo est déjà pris'};
+    account.name=newName;account.lastRenameAt=Date.now();
+    await KV.set(this._accountKey(newName),account,true);
+    try{
+      if(window.storage)await window.storage.delete(this._accountKey(oldName),true);
+      else localStorage.removeItem('sh:'+this._accountKey(oldName));
+    }catch{}
+    this._saveSession({name:newName});
+    return{ok:true};
   }
-};
+};  /* ← FIN DE L'OBJET Auth — accolade manquante corrigée */
 
 /* ═══════════════════════════════════════════════════════
-   PLAYER STORE — Scores/historique par joueur
-   Clé privée: "history:<name_lower>"  (private, per-user)
-   Clé shared: "lb:<name_lower>"       (shared, best comp score for leaderboard)
+   PLAYER STORE
    ═══════════════════════════════════════════════════════ */
 const Store={
   _name(){return Auth.getName()?Auth.getNameLower():'__anon__';},
   _hKey(){return 'history:'+this._name();},
   _bestKey(){return 'best:'+this._name();},
 
-  async getBest(){
-    const v=await KV.get(this._bestKey());return v||0;
-  },
+  async getBest(){const v=await KV.get(this._bestKey());return v||0;},
   async setBest(s){await KV.set(this._bestKey(),s);},
-  async getGames(){
-    const h=await this.getHistory();return h.length;
-  },
+  async getGames(){const h=await this.getHistory();return h.length;},
 
   async getHistory(){
     const h=await KV.get(this._hKey());return Array.isArray(h)?h:[];
@@ -886,13 +1038,9 @@ const Store={
     const h=await this.getHistory();
     h.unshift(e);
     await KV.set(this._hKey(),h.slice(0,100));
-    /* Si partie compétitive → mettre à jour le leaderboard partagé */
-    if(e.isComp&&Auth.isLoggedIn()){
-      await this._updateSharedLB(e);
-    }
+    if(e.isComp&&Auth.isLoggedIn()){await this._updateSharedLB(e);}
   },
 
-  /* Met à jour le leaderboard partagé avec le meilleur score compétitif */
   async _updateSharedLB(entry){
     const name=Auth.getName();
     const key='lb:'+name.toLowerCase();
@@ -907,7 +1055,6 @@ const Store={
     }
   },
 
-  /* Récupère tous les scores compétitifs (shared leaderboard) */
   async getCompScores(){
     try{
       if(window.storage){
@@ -915,7 +1062,6 @@ const Store={
         const entries=await Promise.all(keys.map(k=>KV.get(k,true)));
         return entries.filter(Boolean).sort((a,b)=>b.score-a.score).slice(0,50);
       }else{
-        /* Fallback localStorage */
         const out=[];
         for(let i=0;i<localStorage.length;i++){
           const k=localStorage.key(i);
@@ -979,10 +1125,10 @@ const Timer={
   stop(){if(this._id){clearInterval(this._id);this._id=null;}}
 };
 
-const Streak={n:0,reset(){this.n=0},inc(){return++this.n},get(){return this.n},milestone(){return[{at:5,msg:'🔥 En feu !'},{at:10,msg:'⚡ Inarrêtable !'},{at:20,msg:'👑 Légendaire !'}].find(m=>m.at===this.n)?.msg||null;}};
+const Streak={n:0,reset(){this.n=0;},inc(){return++this.n;},get(){return this.n;},milestone(){return[{at:5,msg:'🔥 En feu !'},{at:10,msg:'⚡ Inarrêtable !'},{at:20,msg:'👑 Légendaire !'}].find(m=>m.at===this.n)?.msg||null;}};
 
 const $=id=>document.getElementById(id);
-const ALL=['home','mode','diff','game','gameover','leaderboard','career'];
+const ALL=['home','mode','diff','game','gameover','leaderboard','career','profile'];
 
 /* ═══════════════════════════════════════════════════════
    AVATAR SVG
@@ -1340,14 +1486,23 @@ const Game={
    AVATAR UI
    ═══════════════════════════════════════════════════════ */
 const AvatarUI={
-  refresh(){
+  async refresh(){
     const name=Auth.getName();
-    $('avatar-face').innerHTML=AvatarSVG.face(name,32);
+    let avatarHtml32=AvatarSVG.face(name,32);
+    let avatarHtml42=AvatarSVG.face(name,42);
+    if(name){
+      const account=await Auth.getAccount();
+      if(account?.avatar){
+        avatarHtml32=`<img class="dropdown-avatar-img" src="${account.avatar}" alt="${name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;
+        avatarHtml42=`<img class="dropdown-avatar-img" src="${account.avatar}" alt="${name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;
+      }
+    }
+    $('avatar-face').innerHTML=avatarHtml32;
     $('avatar-dot').className='avatar-status-dot '+(name?'online':'offline');
     $('avatar-btn').classList.toggle('connected',!!name);
-    $('dd-big-avatar').innerHTML=AvatarSVG.face(name,42);
+    $('dd-big-avatar').innerHTML=avatarHtml42;
     $('dd-big-avatar').classList.toggle('anon',!name);
-    $('dd-user-name').textContent=name||'Anonyme';
+    $('dd-user-name').textContent=name||'Invité';
     $('dd-user-status').textContent=name?'Connecté':'Non connecté';
     $('dd-user-status').classList.toggle('anon',!name);
     $('dd-logged-menu').classList.toggle('hidden',!name);
@@ -1380,10 +1535,130 @@ function loadExamples(){
 }
 
 /* ═══════════════════════════════════════════════════════
+   PROFILE SCREEN
+   ═══════════════════════════════════════════════════════ */
+const ProfileScreen={
+  async open(){
+    await this.refresh();
+    UI.showScreen('profile');
+  },
+
+  async refresh(){
+    const name=Auth.getName();
+    if(!name)return;
+    $('profile-current-name').textContent=name;
+    $('rename-input').value='';
+    $('rename-msg').textContent='';
+    $('rename-msg').className='profile-msg';
+    $('avatar-msg').textContent='';
+    $('avatar-msg').className='profile-msg';
+
+    const account=await Auth.getAccount();
+    const preview=$('profile-avatar-content');
+    if(account?.avatar){
+      preview.innerHTML=`<img src="${account.avatar}" alt="${name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;
+    }else{
+      preview.innerHTML=AvatarSVG.face(name,96);
+    }
+
+    const badge=$('rename-cooldown-badge');
+    const btn=$('btn-rename');
+    if(account?.lastRenameAt){
+      const daysSince=(Date.now()-account.lastRenameAt)/(1000*60*60*24);
+      if(daysSince<7){
+        const daysLeft=Math.ceil(7-daysSince);
+        badge.textContent=`Disponible dans ${daysLeft}j`;
+        badge.className='rename-cooldown';
+        btn.disabled=true;
+        return;
+      }
+    }
+    badge.textContent='Disponible ✓';
+    badge.className='rename-cooldown available';
+    btn.disabled=false;
+  },
+
+  async uploadAvatar(file){
+    if(!file)return;
+    if(file.size>2*1024*1024){
+      $('avatar-msg').textContent='Fichier trop lourd (max 2 Mo)';
+      $('avatar-msg').className='profile-msg err';
+      return;
+    }
+    const reader=new FileReader();
+    reader.onload=async(e)=>{
+      const base64=e.target.result;
+      const img=new Image();
+      img.onload=async()=>{
+        const canvas=document.createElement('canvas');
+        const max=256;
+        const ratio=Math.min(max/img.width,max/img.height);
+        canvas.width=Math.round(img.width*ratio);
+        canvas.height=Math.round(img.height*ratio);
+        canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+        const compressed=canvas.toDataURL('image/jpeg',0.82);
+        const result=await Auth.setAvatar(compressed);
+        if(result.ok){
+          $('avatar-msg').textContent='Photo mise à jour !';
+          $('avatar-msg').className='profile-msg ok';
+          $('profile-avatar-content').innerHTML=`<img src="${compressed}" alt="avatar" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;
+          await AvatarUI.refresh();
+        }else{
+          $('avatar-msg').textContent=result.error;
+          $('avatar-msg').className='profile-msg err';
+        }
+      };
+      img.src=base64;
+    };
+    reader.readAsDataURL(file);
+  },
+
+  async rename(){
+    const newName=$('rename-input').value.trim();
+    if(!newName)return;
+    const result=await Auth.rename(newName);
+    if(result.ok){
+      $('rename-msg').textContent=`Pseudo changé en ${Auth.getName()} !`;
+      $('rename-msg').className='profile-msg ok';
+      await this.refresh();
+      await AvatarUI.refresh();
+      await UI.refreshHome();
+    }else{
+      $('rename-msg').textContent=result.error;
+      $('rename-msg').className='profile-msg err';
+    }
+  }
+};
+
+/* ═══════════════════════════════════════════════════════
+   SPLASH
+   ═══════════════════════════════════════════════════════ */
+function hideSplash(){
+  const s=$('splash');
+  s.classList.add('hidden');
+  setTimeout(()=>s.style.display='none',400);
+}
+
+/* ═══════════════════════════════════════════════════════
    INIT
    ═══════════════════════════════════════════════════════ */
 async function init(){
-  /* Restaurer session si disponible */
+  /* ── CORRECTION : Boutons du splash screen ── */
+  $('splash-login-btn').addEventListener('click',()=>{
+    hideSplash();
+    AuthModal._setTab('login');
+    AuthModal.open(()=>AvatarUI.refresh());
+  });
+  $('splash-register-btn').addEventListener('click',()=>{
+    hideSplash();
+    AuthModal._setTab('register');
+    AuthModal.open(()=>AvatarUI.refresh());
+  });
+  $('splash-guest-btn').addEventListener('click',()=>{
+    hideSplash();
+  });
+
+  /* Restaurer session */
   Auth.loadSession();
 
   /* Auth modal tabs */
@@ -1402,6 +1677,7 @@ async function init(){
   /* Avatar dropdown */
   $('avatar-btn').addEventListener('click',e=>{e.stopPropagation();AvatarUI.toggle();});
   document.addEventListener('click',e=>{if(!$('avatar-dropdown').contains(e.target)&&e.target!==$('avatar-btn'))AvatarUI.close();});
+  $('dd-profile-btn').addEventListener('click',async()=>{AvatarUI.close();await ProfileScreen.open();});
   $('dd-career-btn').addEventListener('click',async()=>{AvatarUI.close();Timer.stop();await UI.refreshCareer();UI.showScreen('career');});
   $('dd-leaderboard-btn').addEventListener('click',async()=>{AvatarUI.close();Timer.stop();await UI.refreshLeaderboard();UI.showScreen('leaderboard');});
   $('dd-logout-btn').addEventListener('click',()=>{Auth.logout();AvatarUI.refresh();AvatarUI.close();UI.refreshHome();});
@@ -1439,6 +1715,15 @@ async function init(){
   $('lightbox').addEventListener('click',()=>Lightbox.close());
   $('lb-close').addEventListener('click',e=>{e.stopPropagation();Lightbox.close();});
 
+  /* Profile */
+  $('profile-avatar-preview').addEventListener('click',()=>$('avatar-file-input').click());
+  $('btn-upload-photo').addEventListener('click',()=>$('avatar-file-input').click());
+  $('avatar-file-input').addEventListener('change',e=>{const f=e.target.files?.[0];if(f)ProfileScreen.uploadAvatar(f);});
+  $('btn-rename').addEventListener('click',()=>ProfileScreen.rename());
+  $('rename-input').addEventListener('keydown',e=>{if(e.key==='Enter')ProfileScreen.rename();});
+  $('profile-back-btn').addEventListener('click',async()=>{await UI.refreshHome();UI.showScreen('home');});
+
+  /* Keyboard shortcuts */
   document.addEventListener('keydown',e=>{
     if(e.key==='Escape'){if($('modal-auth').classList.contains('open')){AuthModal.close();return;}Lightbox.close();return;}
     if($('lightbox').classList.contains('open'))return;
@@ -1447,7 +1732,8 @@ async function init(){
     if(e.key==='ArrowRight'||e.key==='f'||e.key==='F')Game._answer('fake');
   });
 
-  loadExamples();initScrollParallax();
+  loadExamples();
+  initScrollParallax();
   await UI.refreshHome();
   UI.showScreen('home');
   AvatarUI.refresh();
